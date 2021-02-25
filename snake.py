@@ -1,6 +1,15 @@
 import turtle
 import time
 
+
+def balra():
+    fej.left(90)
+
+
+def jobbra():
+    fej.right(90)
+
+
 palya = turtle.Screen()
 palya.setup(width=800, height=600)
 palya.bgcolor("green")
@@ -13,7 +22,10 @@ fej.shape("triangle")
 fej.penup()
 fej.color("black")
 
+palya.onkey(balra, "Left")
+palya.onkey(jobbra, "Right")
+
 while True:
     fej.forward(20)
     palya.update()
-    time.sleep(0.3)
+    time.sleep(0.25)
