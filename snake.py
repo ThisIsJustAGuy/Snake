@@ -25,7 +25,17 @@ fej.color("black")
 palya.onkey(balra, "Left")
 palya.onkey(jobbra, "Right")
 
-while True:
+kijelzo = turtle.Turtle()
+kijelzo.color("white")
+kijelzo.hideturtle()
+kijelzo.clear()
+
+el = True
+
+while el:
     fej.forward(20)
     palya.update()
+    if not (-290 <= fej.ycor() <= 290) or not (-380 <= fej.xcor() <= 380):
+        kijelzo.write("A kukac meghalt", font=("Fira Code Retina", 16, "bold"), align="center")
+        el = False
     time.sleep(0.25)
