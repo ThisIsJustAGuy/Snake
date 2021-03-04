@@ -30,12 +30,10 @@ kijelzo.color("white")
 kijelzo.hideturtle()
 kijelzo.clear()
 
-el = True
-
-while el:
+while True:
     fej.forward(20)
-    palya.update()
     if not (-290 <= fej.ycor() <= 290) or not (-380 <= fej.xcor() <= 380):
         kijelzo.write("A kukac meghalt", font=("Fira Code Retina", 16, "bold"), align="center")
-        el = False
+        kijelzo.clear()
+    palya.update()
     time.sleep(0.25)
