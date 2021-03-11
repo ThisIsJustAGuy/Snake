@@ -1,5 +1,6 @@
 import turtle
-import time
+from time import sleep
+from random import randint
 
 
 def balra():
@@ -8,6 +9,12 @@ def balra():
 
 def jobbra():
     fej.right(90)
+
+
+def gyumolcs_kirak():
+    x = randint(-380, 380)
+    y = randint(-280, 280)
+    gyumolcs.goto(x, y)
 
 
 palya = turtle.Screen()
@@ -30,10 +37,30 @@ kijelzo.color("white")
 kijelzo.hideturtle()
 kijelzo.clear()
 
+gyumolcs_kijelzo = turtle.Turtle()
+gyumolcs_kijelzo.color("white")
+gyumolcs_kijelzo.hideturtle()
+gyumolcs_kijelzo.clear()
+gyumolcs_kijelzo.penup()
+gyumolcs_kijelzo.goto(0, -280)
+gyumolcs_kijelzo.write("0", font=("Fira Code Retina", 12, "bold"), align="center")
+
+gyumolcs = turtle.Turtle()
+gyumolcs.penup()
+gyumolcs.color("red")
+gyumolcs.shape("circle")
+
+darab_gyumolcs = 0
+gyumolcs_kirak()
+
 while True:
     fej.forward(20)
+    if fej.distance(gyumolcs.xcor(), gyumolcs.ycor()) <= 15:
+        gyumolcs_kirak()
+        darab_gyumolcs += 1
+        gyumolcs_kijelzo.clear()
+        gyumolcs_kijelzo.write("{}".format(darab_gyumolcs), font=("Fira Code Retina", 12, "bold"), align="center")
     if not (-290 <= fej.ycor() <= 290) or not (-380 <= fej.xcor() <= 380):
-        kijelzo.write("A kukac meghalt", font=("Fira Code Retina", 16, "bold"), align="center")
         kijelzo.clear()
     palya.update()
-    time.sleep(0.25)
+    sleep(0.25)
